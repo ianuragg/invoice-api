@@ -1,6 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('invoices', views.InvoiceApi)
 
 urlpatterns = [
-    path('', views.endpoints, name='endpoints'),
+    path('', include(router.urls)),
 ]
